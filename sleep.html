@@ -1,0 +1,22 @@
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script>
+    const scene = new THREE.Scene();
+    const camera = new THREE.PerspectiveCamera(75, window.innerWidth/window.innerHeight, 0.1, 1000);
+    const renderer = new THREE.WebGLRenderer();
+    renderer.setSize(window.innerWidth, window.innerHeight);
+    document.body.appendChild(renderer.domElement);
+    const starsGeo = new THREE.BufferGeometry();
+    const starsPos = [];
+    for(let i=0; i<10000; i++) { starsPos.push((Math.random()-0.5)*2000, (Math.random()-0.5)*2000, (Math.random()-0.5)*2000); }
+    starsGeo.setAttribute('position', new THREE.Float32BufferAttribute(starsPos, 3));
+    const starsMat = new THREE.PointsMaterial({ color: 0xffffff, size: 0.7 });
+    const starField = new THREE.Points(starsGeo, starsMat);
+    scene.add(starField);
+    camera.position.z = 1;
+    function animate() {
+        requestAnimationFrame(animate);
+        starField.rotation.y += 0.0002;
+        renderer.render(scene, camera);
+    }
+    animate();
+</script>
