@@ -8,6 +8,8 @@
     </style>
 </head>
 <body>
+    <a href="index.html" style="position: fixed; top: 20px; left: 20px; color: rgba(255,255,255,0.3); text-decoration: none; font-family: sans-serif; font-size: 10px; letter-spacing: 1px; z-index: 1000;">← VOLVER AL VAULT</a>
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
     <script>
         const scene = new THREE.Scene();
@@ -31,7 +33,7 @@
 
         function animate() {
             requestAnimationFrame(animate);
-            points.rotation.y += 0.001; // Rotación lenta y constante
+            points.rotation.y += 0.001; 
             renderer.render(scene, camera);
         }
         animate();
